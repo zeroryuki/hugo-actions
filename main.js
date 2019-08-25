@@ -32,6 +32,7 @@ docker(['pull', `klakegg/hugo:${label}`]);
 // Run build
 docker(['run', '--rm' , '-i',
   '-v', `${process.env.RUNNER_WORKSPACE}/${core.getInput('source')}:/src`,
+  '-v', `${process.env.RUNNER_WORKSPACE}/${core.getInput('content')}:/content`,
   '-v', `${process.env.GITHUB_WORKSPACE}/${core.getInput('target')}:/target`,
   '-e', `HUGO_ENV=${core.getInput('env')}`,
   '-e', `HUGO_PANDOC=${core.getInput('pandoc_command')}`,
